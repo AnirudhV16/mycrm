@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+    {%if user.is_authenticated%}
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Zipcode</th>
+                <th scope="col">Created_at</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    {%if records%}
+    {%for record in records%}
+    
+        
+            <tr>
+                <td><a href="{%url 'customer' record.id%}">{{ record.id }}</a></td>
+                <td>{{ record.first_name }} {{ record.last_name }}</td>
+                <td>{{ record.email }}</td>
+                <td>{{ record.phone }}</td>
+                <td>{{ record.address }}</td>
+                <td>{{ record.city }}</td>
+                <td>{{ record.state }}</td>
+                <td>{{ record.zipcode }}</td>
+                <td>{{ record.created_at }}</td>
+            </tr>
+    {%endfor%}
+    {%endif%}
+    </tbody>
+    </table>
+    {%else%}
+    <div class="col-md-6 offset-md-3">
+    <h1>Login</h1>
+    <form action="{%url 'home'%}" method="POST">{%csrf_token%}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">username</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="username">
+        </div>
+        <br/>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {%endif%}
+</div>
+{%endblock%}

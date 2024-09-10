@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block content%}
+<form method="POST" action="">{%csrf_token%}
+    {{form.as_p}}
+    <input class="btn btn-dark" type="submit" name="addrecord" value="save"/>
+</form>
+</br>
+<a class="btn btn-dark" role="button" aria-disabled="true" href="{%url 'home'%}">Back</a>
+{%endblock%}

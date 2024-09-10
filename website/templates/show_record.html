@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="card" style="width: 18rem;">
+    <div class="card-header text-bg-dark">
+        {{record.first_name}} {{record.last_name}}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>ID:</strong>{{record.id}}</li>
+        <li class="list-group-item"><strong>Email:</strong>{{record.email}}</li>
+        <li class="list-group-item"><strong>Phone:</strong>{{record.phone}}</li>
+        <li class="list-group-item"><strong>Address:</strong>{{record.address}}</li>
+        <li class="list-group-item"><strong>City:</strong>{{record.city}}</li>
+        <li class="list-group-item"><strong>State:</strong>{{record.state}}</li>
+        <li class="list-group-item"><strong>Zipcode:</strong>{{record.zipcode}}</li>
+    </ul>
+</div>
+<br/>
+<a class="btn btn-dark" role="button" aria-disabled="true" href="{%url 'home'%}">Back</a>
+<a class="btn btn-warning" role="button" aria-disabled="true" href="{%url 'update' record.id%}">Update</a>
+<a class="btn btn-danger" role="button" aria-disabled="true" href="{%url 'delete' record.id%}">Delete</a>
+{%endblock%}
